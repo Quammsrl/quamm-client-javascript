@@ -11,7 +11,12 @@ class MachineAuth {
   }
 
   async login (clientSecret, audience) {
-    console.log('machine login')
+    console.log('machine login', JSON.stringify({
+      client_id: this._clientID,
+      client_secret: clientSecret,
+      audience,
+      grant_type: 'client_credentials'
+    }))
     const { data } = await axios({
       url: this._domain,
       method: 'post',
