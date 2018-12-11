@@ -73,7 +73,6 @@ const saveToken = async (token, uniqueData, auth, recaptchaService = 'https://re
 }
 
 const verifyToken = async (hash, auth, recaptchaService = 'https://recaptcha.quamm.it') => {
-  console.log('verifyToken', hash, auth)
   const login = await MachineAuth.getAuth(Object.assign({}, auth, { audience: recaptchaService }))
   if (
     typeof login.accessToken === 'undefined' ||
