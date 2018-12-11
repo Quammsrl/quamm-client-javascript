@@ -11,6 +11,7 @@ class MachineAuth {
   }
 
   async login (clientSecret, audience) {
+    console.log('machine login')
     const { data } = await axios({
       url: this._domain,
       method: 'post',
@@ -25,7 +26,7 @@ class MachineAuth {
       })
     })
 
-    console.log(data)
+    console.log('machine login data', data)
 
     return {
       accessToken: data.access_token,
