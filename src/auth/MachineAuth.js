@@ -25,9 +25,13 @@ class MachineAuth {
       })
     })
 
+    console.log(data)
+
     return {
       accessToken: data.access_token,
-      tokenType: data.token_type
+      tokenType: data.token_type,
+      scope: data.scope,
+      expiresIn: data.expires_in
     }
   }
 

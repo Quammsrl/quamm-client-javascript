@@ -74,7 +74,10 @@ const saveToken = async (token, uniqueData, auth, recaptchaService = 'https://re
 
 const verifyToken = async (hash, auth, recaptchaService = 'https://recaptcha.quamm.it') => {
   const login = await MachineAuth.getAuth(Object.assign({}, auth, { audience: recaptchaService }))
-  if (typeof login.accessToken === 'undefined' || typeof login.tokenType === 'undefined') throw new Error('Bad credetials.')
+  if (
+    typeof login.accessToken === 'undefined' ||
+    typeof login.tokenType === 'undefined' ||
+    !login.scope.includes('read:token')) throw new Error('Bad credetials.')
 
   try {
     const { data } = await axios({
