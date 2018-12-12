@@ -84,7 +84,7 @@ const verifyToken = async (hash, auth, recaptchaService = 'https://recaptcha.qua
       url: `${recaptchaService}/verify/${hash}`,
       method: 'get',
       headers: {
-        Authorization: `${auth.tokenType} ${auth.accessToken}`,
+        Authorization: `${login.tokenType} ${login.accessToken}`,
         'Content-Type': 'application/json'
       }
     })
