@@ -24,8 +24,5 @@ const sendDirectusMail = async (caller, auth, postmanService = 'https://postman.
 }
 
 module.exports = {
-  install,
-  getToken,
-  saveToken,
-  verifyToken
+  sendDirectusMail
 }
