@@ -9,13 +9,15 @@ const defaultOptions = {
 const checkGRecaptcha = (resolve, timeout) => {
   // TODO trasformare a request animation frame
   const interval = window.setInterval(() => {
-    if (typeof window.grecaptcha !== 'undefined') {
+    if (gRecaptchaReady()) {
       window.clearTimeout(timeout)
       window.clearInterval(interval)
       return resolve()
     }
   }, 16)
 }
+
+const gRecaptchaReady = () => typeof window.grecaptcha !== 'undefined' && typeof window.grecaptcha.execute === 'function'
 
 const install = async (token = defaultOptions.token, ttl = defaultOptions.ttl) => {
   if (typeof window.grecaptcha !== 'undefined') throw new Error('Already installed')
