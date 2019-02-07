@@ -1,7 +1,7 @@
 const auth = require('./auth')
 const recaptcha = require('./recaptcha')
-
-module.exports = {
+const exports = {
   auth,
   recaptcha
 }
+module.exports = exports
